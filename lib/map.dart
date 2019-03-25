@@ -4,6 +4,7 @@ import 'package:location/location.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'globals.dart' as globals;
+import 'package:logging/logging.dart'
 
 void main() => runApp(Map());
 
@@ -37,6 +38,7 @@ class FireMapState extends State<FireMap> {
 
   GoogleMapController mapController;
 
+  final _logger = Logger('mapLog');
 
   MarkerId selectedMarker;
 
@@ -91,6 +93,9 @@ class FireMapState extends State<FireMap> {
 
   _animateToUser() async {
     var pos = await location.getLocation();
+
+    _logger.info('Moving to user!');
+
     print(pos.longitude);
     print('\n');
     print(pos.latitude);
